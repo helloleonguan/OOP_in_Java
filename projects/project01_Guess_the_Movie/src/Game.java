@@ -46,6 +46,8 @@ public class Game {
         for (int i = 0; i < this.selected_movie.length(); i++) {
             if (this.correct_guesses.contains(this.selected_movie.charAt(i))) {
                 this.current_progress += this.selected_movie.charAt(i);
+            } else if (this.selected_movie.charAt(i) == ' ') {
+                this.current_progress += " ";
             } else {
                 this.current_progress += "_";
             }
@@ -100,13 +102,4 @@ public class Game {
         return wrong_guesses_str;
     }
 
-    public String get_correct_guesses() {
-        String correct_guesses_str = "";
-
-        for (Character c : this.correct_guesses) {
-            correct_guesses_str += c + " ";
-        }
-
-        return  correct_guesses_str;
-    }
 }
