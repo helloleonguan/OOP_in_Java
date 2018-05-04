@@ -15,4 +15,9 @@ public class Item {
     public int getWeight() {
         return this.weight;
     }
+
+    @Override
+    public String toString() {
+        return name + ": " + weight;
+    }
 }
