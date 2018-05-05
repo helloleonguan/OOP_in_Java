@@ -26,6 +26,10 @@ public class Rocket implements SpaceShip{
         return this.cargo_carried;
     }
 
+    public int get_cost() {
+        return this.cost;
+    }
+
     @Override
     public boolean launch() {
         return true;

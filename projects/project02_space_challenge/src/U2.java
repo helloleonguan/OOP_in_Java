@@ -15,13 +15,13 @@ public class U2 extends Rocket{
     public boolean launch() {
         Random rand_gen = new Random();
 
-        return rand_gen.nextDouble() < 0.04 * (super.get_cargo_carried() / super.get_max_load());
+        return rand_gen.nextDouble() > 0.04 * (super.get_cargo_carried() / super.get_max_load());
     }
 
     @Override
     public boolean land() {
         Random rand_gen = new Random();
 
-        return rand_gen.nextDouble() < 0.08 * (super.get_cargo_carried() / super.get_max_load());
+        return rand_gen.nextDouble() > 0.08 * (super.get_cargo_carried() / super.get_max_load());
     }
 }

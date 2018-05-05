@@ -24,16 +24,55 @@ public class Simulation {
         return items;
     }
 
-    public ArrayList<U1> loadU1(ArrayList<Item> items) {
-        return null;
+    public ArrayList<Rocket> loadU1(ArrayList<Item> items) {
+        ArrayList<Rocket> u1s = new ArrayList<>();
+
+        U1 cur_u1 = new U1();
+        for (Item item : items) {
+            if (cur_u1.canCarry(item)) {
+                cur_u1.carry(item);
+            } else {
+                u1s.add(cur_u1);
+                cur_u1 = new U1();
+            }
+        }
+
+        u1s.add(cur_u1);
+
+        return u1s;
     }
 
-    public ArrayList<U2> loadU2(ArrayList<Item> items) {
-        return null;
+    public ArrayList<Rocket> loadU2(ArrayList<Item> items) {
+        ArrayList<Rocket> u2s = new ArrayList<>();
+
+        U2 cur_u2 = new U2();
+        for (Item item : items) {
+            if (cur_u2.canCarry(item)) {
+                cur_u2.carry(item);
+            } else {
+                u2s.add(cur_u2);
+                cur_u2 = new U2();
+            }
+        }
+
+        u2s.add(cur_u2);
+
+        return u2s;
     }
 
     public int runSimulation(ArrayList<Rocket> rockets) {
-        return 0;
+        int total_cost = 0;
+
+        for (int i = 0; i < rockets.size(); i ++) {
+            if (rockets.get(i).launch() && rockets.get(i).land()) {
+                total_cost += rockets.get(i).get_cost();
+            } else {
+                total_cost += rockets.get(i).get_cost();
+                i --;
+            }
+        }
+
+        return total_cost;
     }
 
 }
